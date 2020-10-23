@@ -21,10 +21,12 @@ body {
 }
 
 #time {
-  font-size: 7rem;
+  font-size: 6rem;
+  position: sticky;
 }
 
 h1 {
+  font-weight: 500;
   margin-bottom: 2rem;
 }
 
@@ -36,7 +38,7 @@ h2 {
 
 @media (max-width: 700px) {
   #time {
-    font-size: 6rem;
+    font-size: 4rem;
   }
 }
 
@@ -56,9 +58,9 @@ h2 {
   color: rgba(4, 238, 255, 0.719);
 }
 
-.btn {
-  width: 60px;
-  height: 60px;
+.btnBackgr {
+  width: 40px;
+  height: 40px;
   border: 0;
   background: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
   background-size: contain;
@@ -66,8 +68,44 @@ h2 {
   filter: grayscale(1);
   margin: 10px;
 }
-.btn:hover {
+.btnBackgr:hover {
   filter: grayscale(0.8);
+}
+.btnBackgr:active,
+.btnBackgr:focus {
+  outline: 0;
+}
+.btnBackgr:active {
+  transform: scale(1.02);
+}
+
+.quote {
+  font: 1.2rem Georgia, serif;
+  margin: 0;
+  background: #eee;
+  padding: 1em;
+  border-radius: 1em;
+}
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+.quote figcaption {
+  text-align: right;
+}
+.btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background-image: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(0.8);
+  margin: 10px;
+}
+.btn:hover {
+  filter: grayscale(0.2);
 }
 .btn:active,
 .btn:focus {

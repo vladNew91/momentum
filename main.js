@@ -6,6 +6,9 @@ const time = document.getElementById("time"),
   morningBackground = "images/morning/",
   afternoonBackground = "images/day/",
   eveningBackground = "images/evening/",
+  btnBackgr = document.querySelector(".btnBackgr"),
+  blockquote = document.querySelector("blockquote"),
+  figcaption = document.querySelector("figcaption"),
   btn = document.querySelector(".btn"),
   images = [
     "01.jpg",
@@ -29,27 +32,27 @@ const time = document.getElementById("time"),
     "20.jpg",
   ],
   months = [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
   ],
   days = [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-    "Воскресенье",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
   ];
 
 let i = 0,
@@ -95,7 +98,7 @@ function setBgGreet() {
     greeting.textContent = "Good afternoon";
     arrayBgImages = afternoonBackground;
     document.body.classList.add("afternoon_text_color");
-  } else if (hour > 0 && hour < 6) {
+  } else if (hour > 00 && hour < 6) {
     greeting.textContent = "Good night";
     arrayBgImages = nightBackground;
     document.body.classList.add("night_text_color");
@@ -125,6 +128,18 @@ function setName(e) {
   } else {
     localStorage.setItem("name", e.target.innerText);
   }
+}
+
+function changeName() {
+  let a = name.textContent;
+  console.log(a);
+  name.innerHTML = "";
+}
+
+function changeFocus() {
+  let a = focus.textContent;
+  console.log(a);
+  focus.innerHTML = "";
 }
 
 //get focus
@@ -164,20 +179,38 @@ function getImage() {
   const imageSrc = arrayBgImages + images[index];
   viewBgImage(imageSrc);
   i++;
-  btn.disabled = true;
+  btnBackgr.disabled = true;
   setTimeout(function () {
-    btn.disabled = false;
+    btnBackgr.disabled = false;
   }, 1000);
 }
 
-btn.addEventListener("click", getImage);
+btnBackgr.addEventListener("click", getImage);
+name.addEventListener("click", changeName);
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);
 focus.addEventListener("keypress", setFocus);
 focus.addEventListener("blur", setFocus);
+focus.addEventListener("click", changeFocus);
 
 //run
 showTime();
 setBgGreet();
 getName();
 getfocus();
+//localStorage.clear();
+
+// если смена цитаты у вас не работает, вероятно, исчерпался лимит API. в консоли ошибка 403
+// скопируйте код себе и запустите со своего компьютера
+
+// если в ссылке заменить lang=en на lang=ru, цитаты будут на русском языке
+// префикс https://cors-anywhere.herokuapp.com используем для доступа к данным с других сайтов если браузер возвращает ошибку Cross-Origin Request Blocked
+async function getQuote() {
+  const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en`;
+  const res = await fetch(url);
+  const data = await res.json();
+  blockquote.textContent = data.quoteText;
+  figcaption.textContent = data.quoteAuthor;
+}
+document.addEventListener("DOMContentLoaded", getQuote);
+btn.addEventListener("click", getQuote);
