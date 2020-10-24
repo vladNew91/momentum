@@ -22,7 +22,8 @@ body {
 
 #time {
   font-size: 6rem;
-  position: sticky;
+
+  max-width: 70%;
 }
 
 h1 {
@@ -34,12 +35,6 @@ h2 {
   margin-bottom: 0.5rem;
   opacity: 0.8;
   font-weight: 600;
-}
-
-@media (max-width: 700px) {
-  #time {
-    font-size: 4rem;
-  }
 }
 
 .morning_text_color {
@@ -66,7 +61,7 @@ h2 {
   background-size: contain;
   background-repeat: no-repeat;
   filter: grayscale(1);
-  margin: 10px;
+  margin-top: 10px;
 }
 .btnBackgr:hover {
   filter: grayscale(0.8);
@@ -82,9 +77,10 @@ h2 {
 .quote {
   font: 1.2rem Georgia, serif;
   margin: 0;
-  background: #eee;
-  padding: 1em;
+  background: rgba(255, 255, 255, 0.472);
+  opacity: 0.6;
   border-radius: 1em;
+  max-width: 80%;
 }
 .quote figcaption,
 .quote blockquote {
@@ -97,12 +93,11 @@ h2 {
   width: 40px;
   height: 40px;
   border: 0;
-  border-radius: 50%;
-  background-image: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
+  background: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
   background-size: contain;
   background-repeat: no-repeat;
-  filter: grayscale(0.8);
-  margin: 10px;
+  filter: grayscale(1);
+  margin-top: 10px;
 }
 .btn:hover {
   filter: grayscale(0.2);
@@ -113,4 +108,50 @@ h2 {
 }
 .btn:active {
   transform: scale(1.02);
+}
+
+.buttons {
+  display: flex;
+}
+
+.btnBack {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.btnQuote {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media (max-width: 760px) {
+  #time {
+    font-size: 2rem;
+    max-width: 90%;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  .btnBackgr {
+    width: 20px;
+    height: 20px;
+  }
+  .btn {
+    width: 20px;
+    height: 20px;
+  }
+  label {
+    font-size: 14px;
+  }
+  .quote {
+    font: 14px Georgia, serif;
+  }
+  .quote figcaption,
+  .quote blockquote {
+    margin: 0.5em;
+  }
 }
