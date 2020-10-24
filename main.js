@@ -59,6 +59,7 @@ let i = 0,
   arrayBgImages = "";
 
 function showTime() {
+  //let today = new Date(1995, 12, 17, 00, 00, 00),
   let today = new Date(),
     day = today.getDay(),
     dayNumber = today.getDate(),
@@ -86,26 +87,29 @@ function addZero(n) {
 
 //set greeting
 function setBgGreet() {
+  //let today = new Date(1995, 12, 17, 00, 00, 00),
   let today = new Date(),
+    // let today = new Date(),
     hour = today.getHours();
+  (min = today.getMinutes()), (sec = today.getSeconds());
 
   //greeting
-  if (hour > 6 && hour < 12) {
+  if (hour >= 6 && hour < 12) {
     greeting.textContent = "Good morning";
     arrayBgImages = morningBackground;
     document.body.classList.add("morning_text_color");
-  } else if (hour > 12 && hour < 18) {
+  } else if (hour >= 12 && hour < 18) {
     greeting.textContent = "Good afternoon";
     arrayBgImages = afternoonBackground;
     document.body.classList.add("afternoon_text_color");
-  } else if (hour > 00 && hour < 6) {
-    greeting.textContent = "Good night";
-    arrayBgImages = nightBackground;
-    document.body.classList.add("night_text_color");
-  } else {
+  } else if (hour >= 18 && hour <= 23) {
     greeting.textContent = "Good evening";
     arrayBgImages = eveningBackground;
     document.body.classList.add("evening_text_color");
+  } else {
+    greeting.textContent = "Good night";
+    arrayBgImages = nightBackground;
+    document.body.classList.add("night_text_color");
   }
 }
 
